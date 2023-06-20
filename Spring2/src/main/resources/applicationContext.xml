@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                     http://www.springframework.org/schema/beans/spring-beans.xsd">
+                     
+<!-- 
+	Servlet컨테이너에서는 web.xml에 등록하여 관리한였다면
+	Spring컨테이너에서는 application.xml에서 동일한 처리를 한다.
+	
+	**
+	applicationContext.xml
+		- bean의 저장소
+		- 스프링 프로젝트에서 전체적으로 가장 중요한 역활을 담당한다.
+		>> 스프링 컨테이너는 이를 참조해서 bean의 생명주기관리 여러가지 서비스를 제공한다.
+		
+
+beans
+	1. bean 엘리먼트 속성들
+		. 클래스를 등록한다.
+		. id - 스프링파일 안에서 유일 해야한다.
+			 - 생략가능, 클라이언트는 호출할 이름이 있어야하므로 id는 있어야한다. 
+			 - 낙타 표기법, 문자표기법을 따른다.
+		. name
+			- id와 동일한 기능을 한다. 유일해야한다.
+			- 식별자 작성 규칙을 따르지 않아도 된다.
+		.class
+			- 필수속성이다. 패키지명까지 함께 지정한다.
+			
+		. init method속성
+			- 스프링컨테이너가 객체를 생설할때 초기화 작업을 설정한다.
+			 
+		. destory - method속성
+			- 스프링컨테이너가 객체를 삭제하기 직전에 호출되는 메소드
+			
+		. scope 속성
+			- 싱들톤 방식이다.
+			- <bean id="" scope="singleton"/>
+	
+	2. import : import처리한다.
+		
+		- beans등록, 트랜잭션, 예외처리, 다국어처리등 하나에 다하면 복잡해진다.
+		이럴때 기능별로 xml파일로 나누어 설정하고 여기에서 import하면된다.
+		<beans>
+			<import resource="contexxt-dataSource.xml"/>
+			<import resource="transaction.xml"/>
+			<import resource="~~~.xml"/>
+			~~~
+		</beans>
+	3. alisa
+	4. description
+			
+ -->
+						
+	<bean id="samsungTV" class="study.SamsungTV"/>
+	<bean id="lgTV" class="study.LgTV"/>
+
+</beans>
+
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	xmlns:p="http://www.springframework.org/schema/p">
+	
+	<bean id="sony" class="study.SonySpeaker"/>
+	<bean id="apple" class="study.AppleSpeaker"/>
+	
+	<bean id="tv" class="study.SamsungTV" p:speaker-ref="sony" p:price="45000"/>
+	
+	<!-- 
+		TV monitor - A회사, B회사
+		
+		삼성 : 모니터 A, 스피커 애플, >>>>>>
+		엘지 : 모니터 B, 스피커는 소니 >>>>>
+		
+		1)생성자
+		2)setter()
+	
+	 -->
+</beans>

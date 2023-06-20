@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	xmlns:p="http://www.springframework.org/schema/p">
+	
+	<!-- <bean id="tv" class="study.LgTV">
+		<constructor-arg index="0" ref="sony"></constructor-arg>
+		<constructor-arg index="1" value="66000"></constructor-arg>
+	</bean> -->
+	
+<!-- 	<bean id="samsung" class="study.SamsungTV" p:speaker-ref="apple" p:price="45000" p:monitor-ref="acom"/> -->
+	
+<!-- 	<bean id="lg" class="study.LgTV" p:speaker-ref="sony" p:price="60000" p:monitor-ref="bcom"/>  -->
+	
+	
+	 
+	
+	<bean id="samsung" class="study.SamsungTV">
+		<constructor-arg index="0" ref="acom"></constructor-arg>
+		<constructor-arg index="1" value="10000"></constructor-arg>
+		
+	</bean>  
+	
+	<!-- <bean id="tv" class="study.SamsungTV">
+		<constructor-arg index="0" ref="apple"></constructor-arg>
+		<constructor-arg index="1" value="66000"></constructor-arg>
+	</bean> -->
+	
+	<bean id="sony" class="study.SonySpeaker"/>
+	<bean id="apple" class="study.AppleSpeaker"/>
+	<bean id="acom" class="study.AcomMonitor"/>
+	<bean id="bcom" class="study.BcomMonitor"/>
+	
+	
+</beans>
