@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!-- 
+	Spring Annotation
+		. @AutoWired
+		. @Qualifier
+		. @Injection
+		. @Resource
+		
+		. @Service		: 비즈니스 로직처리한 서비스클래스
+		. @Respository	: 데이터베이스 연동 DAO
+		. @Controller	: 사용자 요청을 제어하는 컨트롤러
+ -->
+	<context:component-scan base-package="com.mycompany.biz"/>
+	
+	<!-- 스프링컨테이너는 AOP관련 어노테이션을 찾아 인식하고 용도에 맞게 처리한다. -->
+	<aop:aspectj-autoproxy/>
+	
+</beans>
