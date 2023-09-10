@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="collectionBean" class="com.mycompany.biz.injection.CollectionBean">
+		<property name="address">
+			<list>
+				<value>서울시</value>
+				<value>낙원구</value>
+				<value>행복동</value>
+			</list>		
+		</property>
+	</bean>
+	
+	<bean id="collectionSetBean" class="com.mycompany.biz.injection.CollectionBean2">
+		<property name="address">
+			<set>
+				<value>서울시 강남구 논현동</value>
+				<value>서울시 성동구 성수동</value>
+				<value>서울시 마포구 신수동</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="collectionMapBean" class="com.mycompany.biz.injection.CollectionBean3">
+		<property name="address">
+			<map>
+				<entry>
+					<key><value>홍길동</value></key>
+					<value>서울시 강남구 삼성동</value>
+				</entry>
+				<entry>
+					<key><value>왕건</value></key>
+					<value>개성</value>
+				</entry>
+				<entry>
+					<key><value>원효대사</value></key>
+					<value>동굴</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="collectionPropertiesBean" class="com.mycompany.biz.injection.CollectionBean4">
+		<property name="address">
+			<props>
+				<prop key="고길동"> 서울시 영등포구 목동</prop>
+				<prop key="이은희"> 서울시 강서구 화곡동</prop>
+			</props>
+		</property>
+		
+	</bean>
+	
+</beans>
