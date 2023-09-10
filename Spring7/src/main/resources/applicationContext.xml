@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- 
+	Spring Annotation
+		. @AutoWired
+		. @Qualifier
+		. @Injection
+		. @Resource
+		
+		. @Service : 비즈니스 로직 처리한 서비스 클래스
+		. @Respository : 데이터 베이스 연동 DAO
+		. @Contreoller : 사용자 요청을 제어하는 컨트롤러
+
+ -->
+	<context:component-scan base-package="com.mycompany.biz"/>
+</beans>
+ 
