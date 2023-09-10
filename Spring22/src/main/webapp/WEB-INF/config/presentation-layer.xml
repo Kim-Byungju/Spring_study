@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:component-scan base-package="com.mycompany.view"/>
+	
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/board/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean> -->
+
+	<!-- 
+		ComonsMultipartResolver
+			;파일업로드처리를 해준다.
+				.vo를 생성하고
+				.클라리언트의 정보를 생성된 vo에 설정	
+				.insertBoard(Board vo)를 호출할때 커맨드 객체로 전달해주는 역할을 한다.
+	 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="-1"></property>
+	
+	</bean>
+	
+	<!-- 예외처리 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.ArithmeticException">
+					../../common/arithmeticError
+				</prop>
+				<prop key="java.lang.NullpointerException">
+					../../common/nullPointerError
+				</prop>
+			</props>
+		</property>
+		<property name="defaultErrorView" value="../common/error"></property>
+		
+	</bean>
+	
+	<!-- 다국어 처리 -->
+<!-- 
+	1. 메시지를 읽어오는 클래스 - ResourceBundleMessageSource
+		지정된 id로 작성
+		이름규칙 
+			-message. messageSource _en : properties
+					|   			x		x
+			패키지명		파일명		
+	2. 지역(Local)인지 해석하는 클래스
+		지정id로 작성
+		local정보읽어오기
+		locale정보가져오기
+		.AcceptHeaderLocaleResolver : 디폴트 , HTTP요청에서 locale메ㅣ지를 얻음
+		.SessionLocalResolver :세션에저장된 locale정보 적용
+		.FixedLocalResolver :웹요청과 무관하게 특정지역언어 지정
+	3. 변경처리하는 클래스
+		 - 화면에서 언어를 선택하여 변경처리하고 싶을때
+		 - 네임스페이스에서 mvc지정
+ -->
+ 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+ 		<property name="basenames">
+ 			<list>
+ 				<value>message.messageSource</value>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 		<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+ 		<mvc:interceptors>
+ 			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+ 				<property name="paramName" value="lang"></property>
+ 			</bean>
+ 		</mvc:interceptors>
+ 	 
+</beans>
